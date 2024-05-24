@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hangman!</title>
+</head>
+
+<body>
+    <h1>Hangman!</h1>
+    <script>
+        // Create an array of words
+        var words = [
+            "javascript",
+            "monkey",
+            "amazing",
+            "pancake",
+            "pizza",
+            "birds",
+            "chicken",
+            "radio",
+        ];
+
+        // Pick a random word
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        // Set up the answer array
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        var remainingLetters = word.length;
+        var guesses = 7; // Total number of guesses
+
+        // The game loop
+        while (remainingLetters > 0 && guesses > 0) {
+            alert(answerArray.join(" ")); // Show the player their progress
+            alert("You have " + guesses + " guesses left."); // Show remaining guesses
+
+            //if (guesses === 3) {
+            //    alert("You have 2 guesses left.");
+            // }
+
+// Get a guess from the player
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+            if (guess === null) {
+                break; // Exit the game loop
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            } else {
+                guesses--;
+                guess = guess.toLowerCase(); // Convert the guess to lowercase
+                // Update the game state with the guess
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess && answerArray[j] === "_") {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+            // The end of the game loop
+        }
+        // Show the answer and congratulate/encourage the player
+        alert(answerArray.join(" "));
+
+        //document.write("Congratulations! You guessed the word: " + word);
+        //document.write("Too bad! The word was: " + word);
+
+        if (remainingLetters === 0) {
+           alert("Congratulations! You guessed the word: " + word);
+         } else {
+           alert("Too bad! The word was: " + word);
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!--if (guesses > 0) {
+     alert("Good job! The answer was " + word);
+    } else {
+      alert("Too bad! The answer was " + word);
+    }-->

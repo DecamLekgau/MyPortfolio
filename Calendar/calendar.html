@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>activity calendar</title>
+    <style>
+        body {
+            background-color: rgb(20, 170, 95);
+            font-family: "Comic Sans MS";
+        }
+
+        #buttonBox {
+            margin-top: 30px;
+        }
+
+        #thingToDo {
+            margin-top: 20px;
+            background-color: #a9ca17;
+        }
+
+        #monthQuote {
+            margin-top: 20px;
+            background-color: #1ab0ca;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Thabo <em>Lekgau's</em> Activity Calendar:</h1>
+    Today Is:
+    <div id="todaysdate"></div>
+
+    <div id="buttonBox">
+        <button id="whattodo" type="button">What should I do today?</button>
+    </div>
+    <div id="thingToDo"></div>
+
+    <div id="buttonBox">
+        <button id="quote" type="button">What's the quote of the Month?</button>
+    </div>
+    <div id="monthQuote"></div>
+
+    <script>
+        let todayDate = document.getElementById("todaysdate");
+        let todoButton = document.getElementById("whattodo");
+        let quoteToShow = document.getElementById("quote");
+
+
+        // add a listener to the whattodo button
+        todoButton.addEventListener("click", displayActivity);
+        quoteToShow.addEventListener("click", displayQuote);
+
+        // create a new Date object
+        let d = new Date();
+
+        // call the displayDate() function
+        displayDate();
+
+        function displayDate() {
+            // todo: display the current date in the todaysdate div
+            todayDate.innerHTML = d.toDateString();
+        }
+
+        function displayActivity() {
+            // todo: find out the day of the week.
+
+            // let dayOfWeek = d.getDay();
+
+            let dayOfMonth = d.getDate();
+
+            /* todo: set a variable, called youShould, with a different
+               string based on what day of the week it is. */
+            let youShould;
+
+            switch (dayOfMonth) {
+                case 1:
+                    youShould = "Baking: Gather the family and bake something delicious together.";
+                    break;
+                case 2:
+                    youShould = "Gardening: Start a little vegetable, herb, or flower garden.";
+                    break;
+                case 3:
+                    youShould = "Story Time: Instead of just reading a favorite story, act it out as a family.";
+                    break;
+                case 4:
+                    youShould = "Board Games: Have a relaxing day playing board games.";
+                    break;
+                case 5:
+                    youShould = "Craft Day: Get creative with coloring, collages, slime making, or painting.";
+                    break;
+                case 6:
+                    youShould = "Pizza Night: Set up your own family pizzeria.";
+                    break;
+                case 7:
+                    youShould = "Pillow Fort: Imagine the epicness of building a pillow castle!";
+                    break;
+                case 8:
+                    youShould = "Puzzles: Work on jigsaw puzzles as a team.";
+                    break;
+                case 9:
+                    youShould = "Word Search: Challenge each other with word search puzzles.";
+                    break;
+                case 10:
+                    youShould = "Reading: Dive into a good book individually or as a group.";
+                    break;
+                case 11:
+                    youShould = "Educational Worksheets: Print out some educational worksheets for quiet learning time.";
+                    break;
+                case 12:
+                    youShould = "Nature Walk: Explore the outdoors and observe plants, animals, and natural beauty.";
+                    break;
+                case 13:
+                    youShould = "Movie Night: Pick a family favorite or discover a new film together.";
+                    break;
+                case 14:
+                    youShould = "Picnic in the Park: Pack a picnic basket and enjoy a meal outdoors.";
+                    break;
+                case 15:
+                    youShould = "Stargazing: Lay out under the stars and identify constellations.";
+                    break;
+                case 16:
+                    youShould = "Cooking Challenge: Have a friendly cook-off with a mystery ingredient.";
+                    break;
+                case 17:
+                    youShould = "Indoor Obstacle Course: Create an obstacle course using pillows, chairs, and blankets.";
+                    break;
+                case 18:
+                    youShould = "Science Experiments: Try simple experiments with household items.";
+                    break;
+                case 19:
+                    youShould = "Family Photo Shoot: Capture memories with silly poses and props.";
+                    break;
+                case 20:
+                    youShould = "Karaoke Night: Sing your hearts out to favorite tunes.";
+                    break;
+                case 21:
+                    youShould = "DIY Spa Day: Pamper yourselves with homemade face masks and relaxation.";
+                    break;
+                case 22:
+                    youShould = "Build a Fort: Use blankets and furniture to construct a cozy hideaway.";
+                    break;
+                case 23:
+                    youShould = "Outdoor Picnic: Have lunch or dinner in your backyard.";
+                    break;
+                case 24:
+                    youShould = "Art Gallery: Display family artwork around the house.";
+                    break;
+                case 25:
+                    youShould = "Backyard Camping: Set up tents and enjoy a night under the stars.";
+                    break;
+                case 26:
+                    youShould = "Family Dance Party: Groove to your favorite music.";
+                    break;
+                case 27:
+                    youShould = "Cook a New Cuisine: Explore a different culture's cuisine together.";
+                    break;
+                case 28:
+                    youShould = "Plant Seeds: Start a mini indoor garden.";
+                    break;
+                case 29:
+                    youShould = "Family Yoga: Follow online yoga videos as a group.";
+                    break;
+                case 30:
+                    youShould = "Learn a Magic Trick: Surprise each other with simple tricks.";
+                    break;
+                case 31:
+                    youShould = "Random Acts of Kindness: Spread joy by doing something nice for others.";
+                    break;
+                default:
+                    youShould = "Hmm. Something went wrong!"
+                    break;
+            }
+
+            // todo: output the value of youShould into the thingToDo div
+            document.getElementById("thingToDo").innerHTML = youShould;
+        };
+
+        function displayQuote() {
+
+            let yourQuote;
+            let monthOfYear = d.getMonth();
+
+            switch (monthOfYear) {
+                case 0:
+                    yourQuote = "Luck is what happens when preparation meets opportunity.";
+                    break;
+                case 1:
+                    yourQuote = "We are more often frightened than hurt; and we suffer more from imagination than from reality.";
+                    break;
+                case 2:
+                    yourQuote = "Difficulties strengthen the mind, as labor does the body.";
+                    break;
+                case 3:
+                    yourQuote = "True happiness is to enjoy the present, without anxious dependence upon the future.";
+                    break;
+                case 4:
+                    yourQuote = "It is not the man who has too little, but the man who craves more, that is poor.";
+                    break;
+                case 5:
+                    yourQuote = "A gem cannot be polished without friction, nor a man perfected without trials.";
+                    break;
+                case 6:
+                    yourQuote = "You have to persevere and fortify your pertinacity until the will to good becomes a disposition to good."
+                    break;
+                case 7:
+                    yourQuote = "It is quality rather than quantity that matters."
+                    break;
+                case 8:
+                    yourQuote = "The greatest obstacle to living is expectancy, which hangs upon tomorrow and loses today. You are arranging what is in Fortune's control and abandoning what lies in yours."
+                    break;
+                case 9:
+                    yourQuote = "Life is like a play: it's not the length, but the excellence of the acting that matters."
+                    break;
+                case 10:
+                    yourQuote = "He who fears death will never do anything worthy of a living man."
+                    break;
+                case 11:
+                    yourQuote = "We should always allow some time to elapse, for time discloses the truth."
+                    break;
+                default:
+                    yourQuote = "Hmm. Something has gone wrong.";
+                    break;
+            };
+
+            document.getElementById("monthQuote").innerHTML = yourQuote;
+        }
+    </script>
+</body>
+
+</html>
